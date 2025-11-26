@@ -1,0 +1,328 @@
+# Root .gitignore for VoiceWave MeshPay Project
+
+# ============================================
+# Python / Backend
+# ============================================
+# Virtual environments
+backend/venv/
+backend/env/
+backend/.venv/
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.env.*.local
+.venv
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ============================================
+# Node.js / Frontend
+# ============================================
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+frontend/dist/
+frontend/dist-ssr/
+frontend/build/
+*.local
+
+# Vite
+frontend/.vite/
+.vite/
+
+# ============================================
+# Project-Specific Data & Secrets
+# ============================================
+# User data and storage
+backend/storage/users.json
+backend/storage/*.json
+!backend/storage/.gitkeep
+
+# Voiceprint models (user biometric data)
+ml/models/stored_voiceprints/*.npy
+ml/models/stored_voiceprints/*.pkl
+ml/models/stored_voiceprints/*.h5
+!ml/models/stored_voiceprints/.gitkeep
+
+# Cryptographic keys (NEVER commit private keys!)
+backend/crypto/*_private_key.pem
+backend/crypto/*_private.pem
+backend/crypto/private_keys/
+*.key
+*.pem
+!backend/crypto/*_public_key.pem
+!backend/crypto/*_public.pem
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+*.env
+
+# ============================================
+# IDE & Editor Files
+# ============================================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ============================================
+# OS Files
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# Logs & Temporary Files
+# ============================================
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+*~
+
+# ============================================
+# Testing & Coverage
+# ============================================
+# Coverage reports
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+
+# Test results
+test-results/
+playwright-report/
+playwright/.cache/
+
+# ============================================
+# Database & Cache
+# ============================================
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# ============================================
+# Package Manager Lock Files (Optional)
+# ============================================
+# Uncomment if you want to ignore lock files
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+# bun.lockb
+
+# ============================================
+# ML Model Files (Large files)
+# ============================================
+# Large model files (if downloading models)
+ml/models/*.pt
+ml/models/*.pth
+ml/models/*.onnx
+ml/models/*.pb
+ml/models/*.h5
+ml/models/*.ckpt
+ml/models/checkpoints/
+ml/models/weights/
+!ml/models/.gitkeep
+
+# ============================================
+# Documentation Build
+# ============================================
+docs/_build/
+docs/.doctrees/
+site/
+
+# ============================================
+# Miscellaneous
+# ============================================
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Debug files
+*.pdb
+

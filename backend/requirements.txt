@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+numpy
+soundfile
+faster-whisper
+resemblyzer
+pydantic
+pycryptodome
+av
