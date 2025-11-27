@@ -177,7 +177,7 @@ async def confirm_payment(
         encrypted = encrypt_packet(packet)
 
         # Mock Bluetooth/mesh by directly "sending" to bank server
-        forwarded = send_to_mesh(encrypted)
+        forwarded = await send_to_mesh(encrypted)
         if not forwarded:
             return {"success": False, "error": "Failed to forward packet to bank server"}
 

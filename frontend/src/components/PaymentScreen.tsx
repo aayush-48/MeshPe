@@ -20,9 +20,17 @@ export function PaymentScreen() {
   const [phase, setPhase] = useState<'idle' | 'review' | 'done'>('idle');
 
   const handleLogout = async () => {
-    await apiLogout();
-    logout();
-    navigate('/login');
+    console.log("Logout clicked");
+    try {
+      // Attempt server logout but don't block local logout
+      await apiLogout();
+    } catch (e) {
+      console.error("Server logout failed", e);
+    } finally {
+      console.log("Performing local logout");
+      logout();
+      navigate('/login');
+    }
   };
   const handleRecordPayment = async () => {
     if (isRecording || isConfirmRecording || phase !== 'idle') return;
@@ -156,8 +164,8 @@ export function PaymentScreen() {
                     onClick={handleRecordPayment}
                     disabled={isRecording || isConfirmRecording || isProcessing || phase !== 'idle'}
                     className={`w-40 h-40 rounded-full flex items-center justify-center transition-all duration-300 ${isRecording
-                        ? 'bg-destructive animate-pulse-ring'
-                        : 'bg-accent hover:shadow-glow'
+                      ? 'bg-destructive animate-pulse-ring'
+                      : 'bg-accent hover:shadow-glow'
                       } disabled:opacity-50`}
                   >
                     <Mic className="w-20 h-20 text-accent-foreground" />

@@ -7,3 +7,7 @@ resemblyzer
 pydantic
 pycryptodome
 av
+bleak
+bless
+librosa
+scikit-learn==1.3.2

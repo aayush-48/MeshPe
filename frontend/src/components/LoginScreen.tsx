@@ -19,17 +19,30 @@ export function LoginScreen() {
   const [language] = useState('english');
 
   const handleStartLogin = async () => {
-    if (!phone) return;
+    console.log("Start Login clicked. Phone:", phone);
+    if (!phone) {
+      console.log("No phone number entered");
+      return;
+    }
 
-    const response = await loginStart(phone);
-    if (response.success && response.data) {
-      setChallenge(response.data.challenge);
-    } else {
-      toast({
-        title: 'Error',
-        description: response.error || 'Failed to start login',
-        variant: 'destructive',
-      });
+    try {
+      console.log("Calling loginStart API...");
+      const response = await loginStart(phone);
+      console.log("API Response:", response);
+
+      if (response.success && response.data) {
+        console.log("Setting challenge:", response.data.challenge);
+        setChallenge(response.data.challenge);
+      } else {
+        console.error("Login failed:", response.error);
+        toast({
+          title: 'Error',
+          description: response.error || 'Failed to start login',
+          variant: 'destructive',
+        });
+      }
+    } catch (e) {
+      console.error("Exception in handleStartLogin:", e);
     }
   };
 
@@ -145,11 +158,10 @@ export function LoginScreen() {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleRecordAndVerify}
                   disabled={isRecording || isVerifying}
-                  className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    isRecording
+                  className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-300 ${isRecording
                       ? 'bg-destructive animate-pulse-ring'
                       : 'bg-accent hover:shadow-glow'
-                  } disabled:opacity-50`}
+                    } disabled:opacity-50`}
                 >
                   <Mic className="w-16 h-16 text-accent-foreground" />
                 </motion.button>
@@ -159,8 +171,8 @@ export function LoginScreen() {
                 {isRecording
                   ? 'Recording... (5 seconds)'
                   : isVerifying
-                  ? 'Verifying your voice...'
-                  : 'Tap to record'}
+                    ? 'Verifying your voice...'
+                    : 'Tap to record'}
               </p>
 
               <EnhancedButton

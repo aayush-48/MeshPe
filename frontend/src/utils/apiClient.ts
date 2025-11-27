@@ -8,20 +8,28 @@ export interface ApiResponse<T = any> {
 }
 
 async function fetchWithCredentials(url: string, options: RequestInit = {}): Promise<Response> {
-  const response = await fetch(`${BASE_URL}${url}`, {
-    ...options,
-    credentials: 'include',
-    headers: {
-      ...options.headers,
-    },
-  });
+  console.log(`[ApiClient] Fetching ${url}...`);
+  try {
+    const response = await fetch(`${BASE_URL}${url}`, {
+      ...options,
+      credentials: 'include',
+      headers: {
+        ...options.headers,
+      },
+    });
+    console.log(`[ApiClient] Response status: ${response.status}`);
 
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.detail || errorData.error || `HTTP error! status: ${response.status}`);
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error(`[ApiClient] Error data:`, errorData);
+      throw new Error(errorData.detail || errorData.error || `HTTP error! status: ${response.status}`);
+    }
+
+    return response;
+  } catch (e) {
+    console.error(`[ApiClient] Fetch failed:`, e);
+    throw e;
   }
-
-  return response;
 }
 
 export async function signup(formData: FormData): Promise<ApiResponse> {
