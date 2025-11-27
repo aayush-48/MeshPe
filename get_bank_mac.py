@@ -9,7 +9,7 @@ async def main():
         found = False
         for d in devices:
             name = d.name or "Unknown"
-            if "MESHBANK" in name:
+            if "MeshBank" in name:
                 print(f"\nSUCCESS! Found Bank Node:")
                 print(f"Name: {name}")
                 print(f"Address: {d.address}")

@@ -16,7 +16,8 @@ CACHED_BANK_MAC = None
 # MANUAL OVERRIDE: If you know the MAC address of Device B, put it here.
 # Example: "C8:F7:33:11:22:33"
 # If this is set, scanning is skipped.
-BANK_MAC_ADDRESS = "4C:5F:70:87:52:61"
+# TARGET: DEVICE C (RELAY NODE)
+BANK_MAC_ADDRESS = "14:F6:D8:02:D6:4E"
 
 # --- DECRYPTION HELPERS (For Local Simulation Fallback) ---
 def _rsa_decrypt_with_bank_private_key(encrypted_key_hex: str) -> bytes:

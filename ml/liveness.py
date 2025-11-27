@@ -6,7 +6,7 @@ import librosa
 # Global cache for the model
 _MODEL = None
 _MODEL_PATH = os.path.join(os.path.dirname(__file__), "anti_replay_model.pkl")
-LIVENESS_THRESHOLD = 0.5  # Probability threshold for "Fake/Replay" class
+LIVENESS_THRESHOLD = 0.9  # Probability threshold for "Fake/Replay" class
 
 def _load_model():
     global _MODEL
